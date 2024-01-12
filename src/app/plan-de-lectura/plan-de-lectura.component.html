@@ -1,0 +1,27 @@
+<div class="contenedor">
+  <div *ngFor="let mes of [meses[mesActualIndex]]">
+    <h2>{{ mes.nombre }}</h2>
+    <table>
+      <thead>
+        <tr>
+          <th *ngFor="let i of [1, 2, 3, 4, 5, 6, 7, 8]">Días </th>
+        </tr>
+      </thead>
+      <tbody>
+        <ng-container *ngFor="let lecturas of mes.dias; let i = index">
+          <tr *ngIf="i % 8 === 0">
+            <td *ngFor="let j of [0, 1, 2, 3, 4, 5, 6, 7]">
+              <div class="lectura-container" *ngIf="lecturas.day + j <= mes.dias.length && mes.dias[i + j]" (click)="abrirDialogo(getInformacionCelda(mes, i, j))">
+                <p>Mes: {{ mes.nombre }} - Día {{ mes.dias[i + j].day }}</p>
+                <p>Lectura del día: {{ mes.dias[i + j].libro }} {{ mes.dias[i + j].versiculos }}</p>
+              </div>
+            </td>
+          </tr>
+        </ng-container>
+        
+      </tbody>
+    </table>
+  </div>
+  <button (click)="cambiarMes(false)" [disabled]="mesActualIndex === 0">Mes Anterior</button>
+  <button (click)="cambiarMes(true)" [disabled]="mesActualIndex === meses.length - 1">Mes Siguiente</button>
+</div>

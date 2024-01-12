@@ -1,0 +1,45 @@
+/* dialog.component.css */
+
+.principal {
+    max-height: 600px; /* Altura máxima del contenedor */
+    overflow-y: auto; /* Añade scroll vertical si el contenido excede la altura máxima */
+    padding: 20px;
+   
+    margin: 0 auto; /* Centra el contenedor en la página */
+    
+    border-radius: 10px; /* Esquinas redondeadas */
+    background-color: #f8f9fa; /* Color de fondo */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
+  }
+  
+  h2 {
+    color: #007bff; /* Color azul */
+  }
+  
+  div > div {
+    margin-bottom: 10px;
+    width: 90%;
+    margin: 0 auto; /* Centra el contenido en el div */
+  }
+  
+  strong {
+    color: #ff0400; /* Color rojo */
+  }
+  
+  hr {
+    border-color: #007bff;
+  }
+  
+  /* Estilos adicionales para hacer el texto más atractivo */
+  p {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #000;
+  }
+  
+  .contendido-libro {
+    text-align: center; /* Centra el texto */
+    color: #000; /* Color negro */
+    font-size: 24px; /* Tamaño de fuente más grande */
+    margin-bottom: 20px; /* Espacio en la parte inferior */
+  }

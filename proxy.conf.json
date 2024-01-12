@@ -1,0 +1,6 @@
+{
+  "/api": {
+    "target": "http://3.82.25.178:8080",
+    "secure": false
+  }
+}

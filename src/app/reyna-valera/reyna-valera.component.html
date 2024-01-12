@@ -1,0 +1,33 @@
+<div class="libro-container">
+  <mat-form-field class="select">
+    <mat-label>Selecciona el libro:</mat-label>
+    <input matInput [matAutocomplete]="auto" [(ngModel)]="selectedLibro" (ngModelChange)="obtenerVersiculos(selectedLibro)">
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let libro of libros" [value]="libro">
+        {{ libro }}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
+
+  <br>
+
+  <label class="label" for="versiculoSelect">Selecciona el versículo:        </label>
+  <select id="versiculoSelect" class="selectnum" [(ngModel)]="selectedVersiculo">
+    <option *ngFor="let versiculo of versiculos" [value]="versiculo">{{ versiculo }}</option>
+  </select>
+  <br>
+  <button mat-button (click)="buscarCapitulo()">Buscar</button>
+</div>
+<br>
+<div class="capitulo">
+  <mat-card>
+    <mat-card-header *ngFor="let versiculo of versiculosData">
+      <mat-card-title>
+        <h2>{{ selectedLibro }} {{ selectedVersiculo }}:{{ versiculo.verse }}</h2>
+      </mat-card-title>
+      <mat-card-subtitle><p>{{ versiculo.text }}</p></mat-card-subtitle>
+    </mat-card-header>
+  </mat-card>
+  
+
+</div>

@@ -1,0 +1,13 @@
+<div  class="menu">
+    <img src="assets/logo.jpg" alt="Logo" class="logo">
+    <button mat-button [routerLink]="['/inicio']">Inicio</button>
+<button mat-button [matMenuTriggerFor]="belowMenu" >Leer Biblia</button>
+<mat-menu #belowMenu="matMenu" yPosition="below">
+    <button mat-menu-item [routerLink]="['/reyna-valera']">Reyna valera</button>
+    <button mat-menu-item>Dios Habla Hoy</button>
+  </mat-menu>
+  <button mat-button [routerLink]="['/plan-lectura']">Plan de lectura</button>
+<button mat-button >Noticias</button>
+
+</div>
+<div class="inicios"><router-outlet></router-outlet></div>

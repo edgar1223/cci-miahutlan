@@ -1,0 +1,107 @@
+body {
+    background-color: #f0f8ff; /* Cambiado a un tono más suave de azul */
+}
+
+.libro-container {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    max-width: 100%; /* Ancho máximo del contenedor */
+   
+}
+
+.label {
+    color: #d32f2f;
+    font-weight: bold; /* Texto en negrita */
+}
+
+.select {
+    padding: 8px;
+    margin-top: 8px;
+    border: 1px solid #d32f2f;
+    border-radius: 5px;
+    outline: none;
+    font-size: 16px;
+    width:20%; /* Ancho completo del contenedor */
+    box-sizing: border-box; /* Incluye el padding en el ancho total */
+    transition: border-color 0.3s; /* Animación de cambio de color de borde */
+}
+.selectnum{padding: 8px;
+    margin-top: 8px;
+    border: 1px solid #d32f2f;
+    border-radius: 5px;
+    outline: none;
+    font-size: 16px;
+    width:10%; /* Ancho completo del contenedor */
+    box-sizing: border-box; /* Incluye el padding en el ancho total */
+    transition: border-color 0.3s; /* Animación de cambio de color de borde */}
+.select:hover,
+.select:focus {
+    border-color: #d32f2f; /* Cambia el color del borde al pasar el mouse o enfocar */
+}
+.capitulo {
+    background-color: #ffffff; /* Fondo blanco */
+    border-radius: 10px; /* Bordes redondeados */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Sombra más pronunciada */
+    padding: 20px; /* Espaciado interno */
+    margin-top: 20px; /* Espaciado superior */
+}
+
+.capitulo h2 {
+    color: #d32f2f; /* Color rojo oscuro */
+    font-family: 'Arial', sans-serif; /* Tipo de letra */
+    font-size: 24px; /* Tamaño del texto */
+    margin-bottom: 10px; /* Espaciado inferior */
+}
+
+.capitulo p {
+    color: #333; /* Color de texto oscuro */
+    font-family: 'Arial', sans-serif; /* Tipo de letra */
+    font-size: 20px; /* Tamaño del texto más grande */
+    line-height: 1.5; /* Interlineado de 1.5 veces el tamaño del texto */
+    margin-top: 10px; /* Espaciado superior */
+}
+.libro-container button {
+    padding: 10px 20px;
+    background-color: #d32f2f;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Agregar transición al color de fondo */
+    position: relative;
+}
+
+.libro-container button:hover {
+    background-color: #b71c1c; /* Cambiar color al pasar el ratón */
+}
+
+.libro-container button.loading {
+    pointer-events: none; /* Deshabilitar el botón durante la carga */
+    background-color: #ccc; /* Color de fondo durante la carga */
+}
+
+.libro-container button.loading span:first-child {
+    opacity: 0; /* Ocultar el texto "Buscar" durante la carga */
+}
+
+.libro-container button.loading:before {
+    content: ""; /* Crear un elemento pseudo para la animación de carga */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 4px solid #fff;
+    border-radius: 50%;
+    border-top: 4px solid #d32f2f;
+    width: 20px;
+    height: 20px;
+    animation: spin 1s linear infinite; /* Animación de rotación */
+    
+}
+
+@keyframes spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
+}

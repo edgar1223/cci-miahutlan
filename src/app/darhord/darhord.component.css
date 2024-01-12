@@ -1,0 +1,25 @@
+.inicios {
+    background-color: #f5f5f5; /* Fondo más claro que el menú */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* O ajusta la altura según tus necesidades */
+    text-align: center;
+    padding: 20px;
+  }
+  
+
+h2 {
+    color: #d32f2f; /* Cambia el color de la letra del h2 */
+  } 
+  .imga:hover {
+    transform: scale(1.1); /* Escala la imagen al hacer hover */
+  }
+  .imga {
+    width: 30%;
+    height: auto;
+    margin-bottom: 20px;
+    border-radius: 50%; /* Contorno redondo */
+    animation: spin 5s linear infinite;
+  }

@@ -1,0 +1,23 @@
+<!-- dialog.component.html -->
+
+<div *ngIf="result.length > 0" class="principal">
+    <div class="contendido contendido-libro">
+        <strong>Libro: {{ libros[result[0].bookId - 1] }}</strong> 
+      </div>
+    
+    <div *ngFor="let item of result; let i = index" class="contendido">
+      
+      
+        <strong>{{ item.chapter }}.{{ item.verse }}</strong>
+      
+        
+        <p>{{ item.text }}</p>
+      <hr *ngIf="i !== result.length - 1" />
+    </div>
+</div>
+
+
+  <div *ngIf="result.length === 0">
+    <p>No se encontraron resultados.</p>
+  </div>
+  
