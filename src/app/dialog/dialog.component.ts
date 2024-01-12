@@ -64,7 +64,7 @@ export class DialogComponent {
       const [startVerse, endVerse] = versiculos.split('-').map(Number);
 
       // Hacer la consulta a la API
-      const apiUrl = `http://54.91.135.162:8080/biblia/books/${bookId}/${capitulo}/${startVerse}/${endVerse}`;
+      const apiUrl = `https://biblia-production.up.railway.app/biblia/books/${bookId}/${capitulo}/${startVerse}/${endVerse}`;
 
       this.httpClient.get(apiUrl).subscribe(
         (response: any) => {
@@ -124,7 +124,7 @@ export class DialogComponent {
       // Verificar si los valores son números antes de realizar la solicitud
       if (!isNaN(Number(capitulo)) && !isNaN(Number(endCapitulo))) {
         // Hacer la consulta a la API para un rango de capítulos
-        const apiUrl = `http://54.91.135.162:8080/biblia/books/rango/${bookId}/${capitulo}/${endCapitulo}`;
+        const apiUrl = `https://biblia-production.up.railway.app/biblia/books/rango/${bookId}/${capitulo}/${endCapitulo}`;
 
         this.httpClient.get(apiUrl).subscribe(
           (response: any) => {
@@ -189,7 +189,7 @@ export class DialogComponent {
         // Si no se encontró un número para capitulo y endCapitulo, pero hay un libro
         // Realizar una consulta a otra API con el nombre del libro
         bander=false;
-        const otraApiLibroUrl = `http://54.91.135.162:8080/biblia/book/${bookId}`;
+        const otraApiLibroUrl = `https://biblia-production.up.railway.app/biblia/book/${bookId}`;
         this.httpClient.get(otraApiLibroUrl).subscribe(
           (response: any) => {
             // Maneja la respuesta de la otra API aquí
@@ -208,7 +208,7 @@ export class DialogComponent {
       // Verificar si los valores son números antes de realizar la solicitud
       if (!isNaN(Number(capitulo)) && !isNaN(Number(endCapitulo))&& bander !=false) {
         // Hacer la consulta a la API para un rango de capítulos
-        const apiUrl = `http://54.91.135.162:8080/biblia/books/rango/${bookId}/${capitulo}/${endCapitulo}`;
+        const apiUrl = `https://biblia-production.up.railway.app/biblia/books/rango/${bookId}/${capitulo}/${endCapitulo}`;
 
         this.httpClient.get(apiUrl).subscribe(
           (response: any) => {

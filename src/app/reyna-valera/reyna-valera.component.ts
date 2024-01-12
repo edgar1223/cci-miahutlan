@@ -39,7 +39,7 @@ export class ReynaValeraComponent {
 
   obtenerVersiculos(libro: string) {
     const bookId = this.libros.indexOf(libro) + 1;
-    this.httpClient.get<number>(`http://54.91.135.162:8080/biblia/numchapter/${bookId}`).subscribe(
+    this.httpClient.get<number>(`https://biblia-production.up.railway.app/biblia/numchapter/${bookId}`).subscribe(
       (cantidadCapitulos) => {
         this.versiculos = Array.from({ length: cantidadCapitulos }, (_, i) => i + 1);
         this.obtenerCapitulo(bookId, this.selectedVersiculo);
@@ -51,7 +51,7 @@ export class ReynaValeraComponent {
   }
 
   obtenerCapitulo(bookId: number, chapter: number) {
-    this.httpClient.get<any[]>(`http://54.91.135.162:8080/biblia/capitulo/${bookId}/${chapter}`).subscribe(
+    this.httpClient.get<any[]>(`https://biblia-production.up.railway.app/biblia/capitulo/${bookId}/${chapter}`).subscribe(
       (data) => {
         this.versiculosData = data;
       },
