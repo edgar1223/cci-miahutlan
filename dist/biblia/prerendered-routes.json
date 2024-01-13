@@ -1,5 +1,6 @@
 {
   "routes": [
+    "/buscar",
     "/inicio",
     "/plan-lectura",
     "/reyna-valera"
