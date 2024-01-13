@@ -1,0 +1,22 @@
+<!-- busqueda.component.html -->
+<div class="principal">
+    <div class="busqueda">
+      <input [(ngModel)]="frase" (input)="buscarLibro()" placeholder="Escribe tu búsqueda">
+    </div>
+    <div *ngIf="resultados && resultados.length > 0" class="contenido">
+      <ul>
+        <li *ngFor="let resultado of resultados">
+            {{ libros[resultado.bookId-1] }}
+            {{ resultado.chapter }}.{{ resultado.verse }}
+            <br>
+          {{ resultado.text }}
+        </li>
+      </ul>
+    </div>
+    <div class="paginacion">
+        <button (click)="cambiarPagina(paginaActual - 1)" [disabled]="paginaActual === 1">Anterior</button>
+        <span>Página {{ paginaActual }}</span>
+        <button (click)="cambiarPagina(paginaActual + 1)" [disabled]="resultados.length < resultadosPorPagina">Siguiente</button>
+      </div>
+  </div>
+  

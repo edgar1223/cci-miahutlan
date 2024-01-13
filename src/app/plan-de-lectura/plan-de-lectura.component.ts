@@ -1,4 +1,4 @@
-  import { Component } from '@angular/core';
+  import { Component,OnInit  } from '@angular/core';
   import { CommonModule } from '@angular/common';
   import { ViewChild } from '@angular/core';
   import { MatDialog, MatDialogRef } from '@angular/material/dialog';
@@ -23,7 +23,7 @@
     styleUrls: ['./plan-de-lectura.component.css'],
     
   })
-  export class PlanDeLecturaComponent {
+  export class PlanDeLecturaComponent implements OnInit{
     
     @ViewChild('paginator') paginator: any; // ViewChild para acceder al paginador desde el componente
     meses: Array<Mes> = [
@@ -475,6 +475,7 @@
   ]
   }
 
+
           
       // ... otros meses
     ];
@@ -501,7 +502,33 @@
       return lecturasDelDia;
     }
     constructor(public dialog: MatDialog) {}
-
+    ngOnInit(): void {
+      this.mostrarContenidoSegunFecha();
+    }
+    mostrarContenidoSegunFecha(): void {
+      const fechaActual = new Date();
+      const mesActual = fechaActual.getMonth() + 1; // Sumar 1 porque los meses comienzan desde 0
+      const diaActual = fechaActual.getDate();
+     // Encontrar el mes actual en el arreglo
+     const mesActualObj = this.meses.find(mes => mes.nombre === this.obtenerNombreMes(mesActual));
+    
+     if (mesActualObj) {
+       // Encontrar el día actual en el mes actual
+       const diaActualObj = mesActualObj.dias.find(dia => dia.day === diaActual);
+       
+       if (diaActualObj) {
+         // Mostrar el contenido en el cuadro de diálogo
+         let datosLecturas= diaActualObj.day+'\n'+diaActualObj.libro+" "+diaActualObj.versiculos
+         this.abrirDialogo(datosLecturas);
+        
+       }
+     }
+    }
+    obtenerNombreMes(numeroMes: number): string {
+      // Mapear el número del mes a su nombre
+      const nombresMeses = ['ENERO', 'FEBRERO', /* ... otros meses ... */];
+      return nombresMeses[numeroMes - 1];
+    }
   abrirDialogo(datosLectura: string): void {
     this.dialog.open(DialogComponent, {
       data: datosLectura,

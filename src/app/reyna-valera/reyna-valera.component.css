@@ -58,7 +58,7 @@ body {
 .capitulo p {
     color: #333; /* Color de texto oscuro */
     font-family: 'Arial', sans-serif; /* Tipo de letra */
-    font-size: 20px; /* Tamaño del texto más grande */
+    font-size: 25px; /* Tamaño del texto más grande */
     line-height: 1.5; /* Interlineado de 1.5 veces el tamaño del texto */
     margin-top: 10px; /* Espaciado superior */
 }
@@ -105,3 +105,23 @@ body {
     0% { transform: translate(-50%, -50%) rotate(0deg); }
     100% { transform: translate(-50%, -50%) rotate(360deg); }
 }
+/* reyna-valera.component.css */
+
+@media (max-width: 650px) {
+    .mat-autocomplete-panel {
+      font-size: 14px; /* Tamaño de fuente más pequeño en pantallas más pequeñas */
+      max-height: 200px; /* Ajustar la altura máxima del panel en pantallas pequeñas */
+    }
+  
+    .mat-option {
+      padding: 8px; /* Espaciado entre opciones en pantallas más pequeñas */
+    }
+  }
+/* reyna-valera.component.css */
+
+@media screen and (max-width: 600px) {
+    body {
+      margin: 0;
+    }
+  }
+    

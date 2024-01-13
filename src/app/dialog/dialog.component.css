@@ -11,7 +11,11 @@
     background-color: #f8f9fa; /* Color de fondo */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
   }
-  
+  @media (max-height: 650px) {
+    .principal {
+        max-height: 400px; /* Cambia la altura a 400px cuando la pantalla sea menor a 650px */
+    }
+}
   h2 {
     color: #007bff; /* Color azul */
   }
@@ -32,7 +36,7 @@
   
   /* Estilos adicionales para hacer el texto más atractivo */
   p {
-    font-size: 16px;
+    font-size: 18px;
     line-height: 1.5;
     color: #000;
   }

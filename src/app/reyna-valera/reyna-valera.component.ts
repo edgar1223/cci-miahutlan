@@ -1,4 +1,4 @@
-import { Component, NgModule } from '@angular/core';
+import { Component, NgModule, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
@@ -9,7 +9,8 @@ import {FormControl, ReactiveFormsModule} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-
+import { Observable } from 'rxjs';
+import { startWith, map } from 'rxjs/operators';
 @Component({
   selector: 'app-reyna-valera',
   standalone: true,
@@ -17,7 +18,8 @@ import { MatAutocompleteModule } from '@angular/material/autocomplete';
   templateUrl: './reyna-valera.component.html',
   styleUrl: './reyna-valera.component.css'
 })
-export class ReynaValeraComponent {
+export class ReynaValeraComponent  implements OnInit {
+  myControl = new FormControl();
   libros: string[] = [
     'Génesis', 'Éxodo', 'Levítico', 'Números', 'Deuteronomio', 'Josué', 'Jueces', 'Rut',
     '1 Samuel', '2 Samuel', '1 Reyes', '2 Reyes', '1 Crónicas', '2 Crónicas', 'Esdras',
@@ -30,13 +32,30 @@ export class ReynaValeraComponent {
     '1 Timoteo', '2 Timoteo', 'Tito', 'Filemón', 'Hebreos', 'Santiago', '1 Pedro', '2 Pedro',
     '1 Juan', '2 Juan', '3 Juan', 'Judas', 'Apocalipsis'
   ];
+  filteredLibros: Observable<string[]> | undefined;
   selectedLibro: string = '';
   versiculos: number[] = [];
   selectedVersiculo: number = 1;
   versiculosData: any[] = [];
 
   constructor(private httpClient: HttpClient) {}
-
+  ngOnInit() {
+  }
+  onInputChange(event: Event) {
+    const inputElement = event.target as HTMLInputElement;
+    this.filteredLibros = this.myControl.valueChanges.pipe(
+      startWith(inputElement.value),  // Use the input value
+      map(value => this._filter(value))
+    );
+  }
+ 
+  private _filter(value: string): string[] {
+    const filterValue = value.toLowerCase();
+    return this.libros.filter(libro => libro.toLowerCase().includes(filterValue));
+  }
+  displayFn(libro: string): string {
+    return libro ? libro : '';
+  }
   obtenerVersiculos(libro: string) {
     const bookId = this.libros.indexOf(libro) + 1;
     this.httpClient.get<number>(`https://biblia-production.up.railway.app/biblia/numchapter/${bookId}`).subscribe(
