@@ -1,0 +1,42 @@
+/* custom-alert-dialog.component.css */
+
+:host {
+    display: block;
+}
+
+h2 {
+    color: #dc3545; /* Color del título */
+    text-align: center;
+}
+
+mat-dialog-content {
+    padding: 20px; /* Espaciado interno del contenido */
+    font-size: 16px; /* Tamaño de fuente del contenido */
+    text-align: justify; /* Justificar el texto */
+    width: 100%;
+}
+div{
+    width: 100%;
+}
+mat-dialog-actions {
+    display: flex;
+    justify-content: center; /* Centrar los botones en el cuadro de diálogo */
+    margin-top: 20px; /* Ajusta el margen superior según sea necesario */
+}
+
+button {
+    background-color: #dc3545; /* Color de fondo del botón */
+    color: #fffdfd; /* Color del texto del botón */
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    
+    transition: background-color 0.3s; /* Agregar transición al color de fondo */
+}
+
+button:hover {
+    background-color: #bd2130; /* Cambiar color de fondo al pasar el ratón por encima */
+}
+mat-dialog-actions button.mat-dialog-close {
+    color: #fff; /* Establecer el color del texto a blanco */
+}

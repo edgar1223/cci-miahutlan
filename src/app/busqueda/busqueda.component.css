@@ -72,7 +72,7 @@
     padding: 10px 15px;
     font-size: 14px;
     margin: 0 5px;
-    background-color: #FF69B4;
+    background-color: #007bff; /* Color de fondo del botón */
     color: #FFF;
     border: none;
     border-radius: 5px;
@@ -88,3 +88,4 @@
     font-family: 'Arial', sans-serif; /* Cambiar tipo de letra */
     line-height: 1.5; /* Interlineado de 1.5 */
     font-size:20px;}
+   

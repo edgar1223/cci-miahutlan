@@ -32,14 +32,11 @@ export class BusquedaComponent {
   paginaActual = 1;
   buscarLibro() {
     if (this.frase.trim() !== '') {
-      this.http.get(`https://biblia-production.up.railway.app/biblia/book/buscar/${this.frase}`).subscribe(
+      const url = `https://biblia-production.up.railway.app/biblia/book/buscar/${this.frase}/${this.resultadosPorPagina}/${this.paginaActual}`;
+
+      this.http.get(url).subscribe(
         (data: any) => {
-        
-          const inicio = (this.paginaActual - 1) * this.resultadosPorPagina;
-          const fin = inicio + this.resultadosPorPagina;
-          this.resultados = data
-          this.resultados = this.resultados.slice(inicio, fin);
-          //alert( this.resultados);
+          this.resultados = data;
         },
         (error) => {
           console.error('Error al buscar:', error);
@@ -54,4 +51,5 @@ export class BusquedaComponent {
     // Lógica para obtener los resultados de la nueva página, por ejemplo, ajustando el índice de inicio y fin.
     this.buscarLibro();
   }
+  
 }

@@ -1,34 +1,38 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <div class="libro-container">
 
-    <mat-form-field class="example-full-width">
-      <mat-label>Selecciona el libro:</mat-label>
-      <input matInput [formControl]="myControl"  [(ngModel)]="selectedLibro" (ngModelChange)="obtenerVersiculos(selectedLibro)"[matAutocomplete]="auto" (input)="onInputChange($event)" name="selectedLibro">
-      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
-        <mat-option *ngFor="let libro of filteredLibros | async" [value]="libro">
-          {{ libro }}
-        </mat-option>
-      </mat-autocomplete>
-    </mat-form-field>
-    
+  <mat-form-field class="example-full-width">
+    <mat-label>Selecciona el libro:</mat-label>
+    <input matInput [formControl]="myControl" [(ngModel)]="selectedLibro"
+      (ngModelChange)="obtenerVersiculos(selectedLibro)" [matAutocomplete]="auto" (input)="onInputChange($event)"
+      name="selectedLibro" (click)="onInputChange($event)">
+    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+      <mat-option *ngFor="let libro of filteredLibros | async" [value]="libro">
+        {{ libro }}
+      </mat-option>
+    </mat-autocomplete>
+  </mat-form-field>
 
-    <br>
 
-    <label class="label" for="versiculoSelect">Selecciona el versículo:</label>
-    <select id="versiculoSelect" class="selectnum" [(ngModel)]="selectedVersiculo">
-      <option *ngFor="let versiculo of versiculos" [value]="versiculo">{{ versiculo }}</option>
-    </select>
-    <br>
-    <button mat-button (click)="buscarCapitulo()">Buscar</button>
+  <br>
+
+  <label class="label" for="versiculoSelect">Selecciona el versículo:</label>
+  <select id="versiculoSelect" class="selectnum" [(ngModel)]="selectedVersiculo">
+    <option *ngFor="let versiculo of versiculos" [value]="versiculo">{{ versiculo }}</option>
+  </select>
+  <br>
+  <button mat-button (click)="buscarCapitulo()">Buscar</button>
 
 
 </div>
 <br>
 <div class="capitulo">
   <mat-card>
+    <br>
+    <h1> {{ selectedLibro }}</h1>
     <mat-card-header *ngFor="let versiculo of versiculosData">
       <mat-card-title>
-        <h2>{{ selectedLibro }} {{ selectedVersiculo }}:{{ versiculo.verse }}</h2>
+        <h2> {{ selectedVersiculo }}:{{ versiculo.verse }}</h2>
       </mat-card-title>
       <mat-card-subtitle>
         <p>{{ versiculo.text }}</p>

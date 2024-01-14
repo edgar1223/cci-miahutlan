@@ -3,8 +3,8 @@
     <button mat-button [routerLink]="['/inicio']">Inicio</button>
 <button mat-button [matMenuTriggerFor]="belowMenu" >Leer Biblia</button>
 <mat-menu #belowMenu="matMenu" yPosition="below">
-    <button mat-menu-item [routerLink]="['/reyna-valera']">Reyna valera</button>
-    <button mat-menu-item>Dios Habla Hoy</button>
+    <button mat-menu-item [routerLink]="['/reyna-valera']">Reyna valera 1909</button>
+    <button mat-menu-item (click)="dioshabla()">Dios Habla Hoy (próximamente) </button>
     <button mat-menu-item [routerLink]="['/buscar']">buscar frase de la biblia</button>
   </mat-menu>
   <button mat-button [routerLink]="['/plan-lectura']">Plan de lectura</button>

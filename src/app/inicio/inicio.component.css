@@ -43,4 +43,26 @@
     animation: spin 5s linear infinite;
   }
   
- 
+  .custom-alert {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #f8d7da; /* Color de fondo rojo claro */
+    color: #721c24; /* Color de texto oscuro */
+    border: 1px solid #f5c6cb; /* Borde rojo claro */
+    padding: 15px; /* Espaciado interno */
+    border-radius: 5px; /* Bordes redondeados */
+    max-width: 200px; /* Máximo ancho del mensaje */
+    text-align: center; /* Centrar el texto */
+}
+
+/* Estilo para el botón en el alert */
+.custom-alert button {
+    background-color: #dc3545; /* Color de fondo rojo */
+    color: #fff; /* Color de texto blanco */
+    border: none; /* Sin borde */
+    padding: 8px 15px; /* Espaciado interno */
+    border-radius: 3px; /* Bordes redondeados */
+    cursor: pointer;
+}

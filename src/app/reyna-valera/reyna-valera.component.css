@@ -118,7 +118,12 @@ body {
     }
   }
 /* reyna-valera.component.css */
-
+h1{
+    color:#b71c1c;
+    text-align: center;
+    font-size: 30px;
+    padding: 20px;
+}
 @media screen and (max-width: 600px) {
     body {
       margin: 0;

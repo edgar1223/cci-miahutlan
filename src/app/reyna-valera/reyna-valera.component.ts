@@ -11,6 +11,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 import { Observable } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
+
 @Component({
   selector: 'app-reyna-valera',
   standalone: true,
@@ -37,21 +38,25 @@ export class ReynaValeraComponent  implements OnInit {
   versiculos: number[] = [];
   selectedVersiculo: number = 1;
   versiculosData: any[] = [];
-
+  
   constructor(private httpClient: HttpClient) {}
   ngOnInit() {
   }
   onInputChange(event: Event) {
     const inputElement = event.target as HTMLInputElement;
+    const inputValue = inputElement.value;
+    const filtroSinAcentos = this.quitarAcentos(inputValue.toLowerCase());
     this.filteredLibros = this.myControl.valueChanges.pipe(
-      startWith(inputElement.value),  // Use the input value
-      map(value => this._filter(value))
+      startWith(inputValue),
+      map(value => {
+        const filterValue = this.quitarAcentos(value.toLowerCase());
+        return this._filter(filterValue, filtroSinAcentos);
+      })
     );
   }
  
-  private _filter(value: string): string[] {
-    const filterValue = value.toLowerCase();
-    return this.libros.filter(libro => libro.toLowerCase().includes(filterValue));
+  private _filter(value: string, filtroSinAcentos: string): string[] {
+    return this.libros.filter(libro => this.quitarAcentos(libro.toLowerCase()).includes(filtroSinAcentos));
   }
   displayFn(libro: string): string {
     return libro ? libro : '';
@@ -68,7 +73,9 @@ export class ReynaValeraComponent  implements OnInit {
       }
     );
   }
-
+   quitarAcentos(cadena: string): string {
+    return cadena.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  }
   obtenerCapitulo(bookId: number, chapter: number) {
     this.httpClient.get<any[]>(`https://biblia-production.up.railway.app/biblia/capitulo/${bookId}/${chapter}`).subscribe(
       (data) => {
@@ -84,4 +91,5 @@ export class ReynaValeraComponent  implements OnInit {
     const bookId = this.libros.indexOf(this.selectedLibro) + 1;
     this.obtenerCapitulo(bookId, this.selectedVersiculo);
   }
+ 
 }
